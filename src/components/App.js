@@ -29,8 +29,8 @@ export default function App() {
   useEffect( ()=> {
     axios.get(`${BASE_URL}/friends?api_key=${API_KEY}`)
       .then (res => {
-        console.log(res)
-        setFriends(res)
+        console.log(res.data)
+        setFriends(res.data)
       })
       .catch (err => {
         console.log(err)
@@ -41,9 +41,11 @@ export default function App() {
   return (
     <div className='container'>
       <h1>Some of my friends:</h1>
-      {/* start by mapping over the friends array...*/}
+      {friends.map(fr => 
+        <Friend friend={fr} openDetails={openDetails} key={fr.id}/>)
+      }
       {
-        currentFriendId && <Details friendId={currentFriendId} close={closeDetails} />
+        currentFriendId && <Details friends={friends} friendId={currentFriendId} close={closeDetails} />
       }
     </div>
   )
