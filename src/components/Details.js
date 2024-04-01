@@ -7,10 +7,21 @@ export default function Details(props) {
   const [details, setDetails] = useState(null)
 
   // 👉 TASK 4 - Create a side effect 🥇 that runs only after first render.
+  useEffect( () => {
+
+  }, [])
 
   // 👉 TASK 5 - Create a side effect 👻 that runs only after first render
   // and puts a 'click' event handler on document.
   // See what happens if we don't clean up.
+
+  useEffect( () => {
+    const handleClick = () => console.log('clicked')
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [])
 
   // 👉 TASK 6 - Create a side effect 🥵 that runs after every render.
 
@@ -20,7 +31,7 @@ export default function Details(props) {
   // On success, shove the details of the friend in `details` slice of state
   useEffect( ()=> {
     axios.get(`${BASE_URL}/friends/${friendId}?api_key=${API_KEY}`)
-    
+
       .then (res => {
         console.log(res.data)
         setDetails(res.data)
