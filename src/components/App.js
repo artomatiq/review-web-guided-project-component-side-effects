@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 // 👉 TASK 2 - import the contants from constants/index.js
-import constants from '../constants/index'
+import {BASE_URL, API_KEY} from '../constants/index'
+
 
 import Details from './Details'
 import Friend from './Friend';
@@ -26,7 +27,14 @@ export default function App() {
   // On success, set the array of friend objects from the API into state.
 
   useEffect( ()=> {
-    
+    axios.get(`${BASE_URL}/friends?api_key=${API_KEY}`)
+      .then (res => {
+        console.log(res)
+        setFriends(res)
+      })
+      .catch (err => {
+        console.log(err)
+      })
   }, [])
 
 
