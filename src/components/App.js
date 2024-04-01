@@ -45,7 +45,7 @@ export default function App() {
         <Friend friend={fr} openDetails={openDetails} key={fr.id}/>)
       }
       {
-        currentFriendId && <Details friends={friends} friendId={currentFriendId} close={closeDetails} />
+        currentFriendId && <Details friendId={currentFriendId} close={closeDetails} />
       }
     </div>
   )

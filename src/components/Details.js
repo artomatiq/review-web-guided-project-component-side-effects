@@ -3,12 +3,12 @@ import { BASE_URL, API_KEY } from '../constants'
 import axios from 'axios'
 
 export default function Details(props) {
-  const { friendId, close, friends } = props
+  const { friendId, close } = props
   const [details, setDetails] = useState(null)
 
   // 👉 TASK 4 - Create a side effect 🥇 that runs only after first render.
   useEffect( () => {
-
+    window.alert('Welcome to details!')
   }, [])
 
   // 👉 TASK 5 - Create a side effect 👻 that runs only after first render
@@ -24,6 +24,10 @@ export default function Details(props) {
   }, [])
 
   // 👉 TASK 6 - Create a side effect 🥵 that runs after every render.
+
+  useEffect( () => {
+    console.log('rendered details')
+  })
 
   // 👉 TASK 7 - Create a side effect 📲 that runs when a particular variable changes:
   // Whenever props.friendId updates we should trigger a fetch for details of the friend.
